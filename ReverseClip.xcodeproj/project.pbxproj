@@ -30,6 +30,7 @@
 		2A676F1E15E18E6700F3E8BD /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A676F1D15E18E6700F3E8BD /* CoreMedia.framework */; };
 		2A676F2015E18E7900F3E8BD /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A676F1F15E18E7900F3E8BD /* CoreVideo.framework */; };
 		2A676F2215E18EEF00F3E8BD /* ReadMe.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2A676F2115E18EEF00F3E8BD /* ReadMe.rtf */; };
+		E9BE6602219BFA3B00400B03 /* 720x960_20_18s.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = E9BE6601219BF98F00400B03 /* 720x960_20_18s.mp4 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +79,7 @@
 		2A676F1D15E18E6700F3E8BD /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		2A676F1F15E18E7900F3E8BD /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
 		2A676F2115E18EEF00F3E8BD /* ReadMe.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = ReadMe.rtf; sourceTree = "<group>"; };
+		E9BE6601219BF98F00400B03 /* 720x960_20_18s.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = 720x960_20_18s.mp4; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -207,6 +209,7 @@
 		2A676F1A15E18D1100F3E8BD /* Recources */ = {
 			isa = PBXGroup;
 			children = (
+				E9BE6601219BF98F00400B03 /* 720x960_20_18s.mp4 */,
 				2A676F1815E18D0300F3E8BD /* IMG_2262.MOV */,
 			);
 			name = Recources;
@@ -292,6 +295,7 @@
 				2A676EDD15E18CDF00F3E8BD /* InfoPlist.strings in Resources */,
 				2A676EE615E18CDF00F3E8BD /* MainStoryboard.storyboard in Resources */,
 				2A676F1915E18D0300F3E8BD /* IMG_2262.MOV in Resources */,
+				E9BE6602219BFA3B00400B03 /* 720x960_20_18s.mp4 in Resources */,
 				2A676F2215E18EEF00F3E8BD /* ReadMe.rtf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

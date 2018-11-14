@@ -25,7 +25,7 @@
 
 - (AVURLAsset*)getAssetURLFromBundleWithFileName:(NSString*)fileName
 {
-    NSString *sourceMoviePath = [[NSBundle mainBundle] pathForResource:fileName ofType:@"MOV"];
+    NSString *sourceMoviePath = [[NSBundle mainBundle] pathForResource:fileName ofType:@"mp4"];
     NSURL *sourceMovieURL = [NSURL fileURLWithPath:sourceMoviePath];
     AVURLAsset *sourceAsset	= [AVURLAsset URLAssetWithURL:sourceMovieURL options:nil];
     return sourceAsset;

@@ -52,7 +52,7 @@
 -(void) createReverseClip
 {
     RCFileHandler *filehandler = [[RCToolbox sharedToolbox] fileHandler];
-    AVURLAsset *urlAsset = [filehandler getAssetURLFromBundleWithFileName:@"IMG_2262"];
+    AVURLAsset *urlAsset = [filehandler getAssetURLFromBundleWithFileName:@"720x960_20_18s"];
     [self exportReversedClip:urlAsset];
 }
 

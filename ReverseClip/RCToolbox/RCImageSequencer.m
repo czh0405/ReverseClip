@@ -8,9 +8,10 @@
 #import <CoreMedia/CoreMedia.h>
 #import "RCToolbox.h"
 #import "RCConstants.h"
+#import <sys/time.h>
 
-#define FRAME_WIDTH 640
-#define FRAME_HEIGHT 360
+#define FRAME_WIDTH 720
+#define FRAME_HEIGHT 960
 #define FRAMES_PER_SEC 25
 #define FRAME_SCALE 600
 
@@ -26,6 +27,8 @@
 @property Float64 fakeTimeElapsed;
 @property Float64 incrementTime;
 @property NSString *currentFileName;
+@property int num;
+@property int64_t useTime;
 @end
 
 @implementation RCImageSequencer
@@ -64,22 +67,38 @@
         clipTime += _incrementTime;
     };
 
+    [self startRecording];
+    
+    
     [_imageGenerator generateCGImagesAsynchronouslyForTimes:times
                                          completionHandler:^(CMTime requestedTime, CGImageRef image, CMTime actualTime,
                                                              AVAssetImageGeneratorResult result, NSError *error) {
                                              
                                              if (result == AVAssetImageGeneratorSucceeded) {
-                                                 [_imageSequence addObject:(__bridge id)image];
+//                                                 [_imageSequence addObject:(__bridge id)image];
+//
+//                                                 _percentageDone = ((Float32)[_imageSequence count] / (Float32)[times count])*100;
+//
+//                                                 if([_delegate respondsToSelector:@selector(imageSequencerProgress:)]){
+//                                                     [_delegate imageSequencerProgress:_percentageDone];
+//                                                 }
+//
+//                                                 if ([_imageSequence count] == [times count]) {
+//                                                     [self startWritingTheSamples];
+//                                                 }
+                                                 [self writeSample:image];
+                                                 self.num = self.num + 1;
+                                                 if (self.num == 1) {
+                                                     _useTime = [self getClockTime];
+                                                 }
                                                  
-                                                 _percentageDone = ((Float32)[_imageSequence count] / (Float32)[times count])*100;
-
-                                                 if([_delegate respondsToSelector:@selector(imageSequencerProgress:)]){
-                                                     [_delegate imageSequencerProgress:_percentageDone];
+                                                 
+                                                 if (self.num == [times count]) {
+                                                     int64_t time = [self getClockTime] - _useTime;
+                                                     NSLog(@"++++++++++ time = %fs", time / 1000000.0f);
+                                                     [self stopRecording];
                                                  }
-
-                                                 if ([_imageSequence count] == [times count]) {
-                                                     [self startWritingTheSamples];
-                                                 }
+                                                 
                                              }
                                              
                                              if (result == AVAssetImageGeneratorFailed) {
@@ -195,6 +214,13 @@
         }
     _currentFileName = nil;
     }];
+}
+
+-(int64_t) getClockTime
+{
+    struct timeval time;
+    gettimeofday(&time, NULL);
+    return time.tv_sec * 1000000 + time.tv_usec;
 }
 
 @end
